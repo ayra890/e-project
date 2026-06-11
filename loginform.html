@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        /*  Background */
+        body {
+            background: linear-gradient(rgba(124, 122, 122, 0.7)), 
+                        url('about us images/login page bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /*  Animation */
+        .login-card {
+            animation: slideUpFade 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Left Panel Styling */
+        .left-panel {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url("about us images/login foam image.jpg") center/cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Input Styling */
+        .form-input { 
+            background-color: #f8f9fa; 
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            background-color: #fff;
+            border-color: #0d6efd;
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.1);
+            transform: scale(1.02);
+        }
+
+        /* Login Button Animation */
+        .btn-login {
+            background: linear-gradient(45deg, #0d6efd, #00d2ff);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+            filter: brightness(1.1);
+        }
+
+        /* Custom Alert Styling */
+        #validationAlert {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1050;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 50px;
+        }
+        
+    /* Google Font for Elegance */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+    /* Text Styling */
+    .wedding-title {
+        font-family: 'Playfair Display', serif;
+        text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+        letter-spacing: 1px;
+    }
+
+    .divider {
+        width: 60px;
+        height: 3px;
+        background-color: #0d6efd; 
+        border-radius: 2px;
+    }
+
+    .ring-icon {
+        display: inline-block;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    </style>
+</head>
+<body class="d-flex align-items-center">
+
+<div id="validationAlert" class="alert alert-danger alert-dismissible fade show text-center fw-bold" role="alert">
+    ❌ OOPS! Please fill the form before submitting.
+</div>
+
+<div class="container">
+    <div class="row g-0 shadow-lg rounded-4 overflow-hidden bg-white mx-auto login-card" style="max-width: 900px; min-height: 530px;">
+        <div class="col-md-6 left-panel d-none d-md-flex flex-column justify-content-start p-5 text-white pt-5">
+            <div class="content-wrapper mt-4">
+                <h1 class="display-6 fw-bold wedding-title">
+                    Welcome Back <span class="ring-icon">💍</span>
+                </h1>
+                <div class="divider mb-3"></div>
+                <p class="lead fw-light text-light-50 ">
+                    Login to your <span class="fw-normal text-white">Wedding Planner</span> account <br> 
+                    and manage your beautiful moments.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-6 p-5 bg-white">
+            <div class="text-center mb-5">
+                <h4 class="fw-bold text-dark-emphasis">USER LOGIN</h4>
+                <div class="mx-auto" style="width: 50px; height: 3px; background: #0d6efd; border-radius: 2px;"></div>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="mb-3">
+                    <label class="small fw-bold text-muted mb-1">Username</label>
+                    <input type="text" id="username" class="form-control form-input p-3 rounded-3" placeholder="Enter your username" required>
+                </div>
+                <div class="mb-4">
+                    <label class="small fw-bold text-muted mb-1">Password</label>
+                    <input type="password" id="password" class="form-control form-input p-3 rounded-3" placeholder="••••••••" required>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-4 small">
+                    <div class="form-check">
+                        <input class="form-check-input mt-1" type="checkbox" id="rem">
+                        <label class="form-check-label text-muted" for="rem">Remember me</label>
+                    </div>
+                    <a href="#" class="text-decoration-none forgot-link fw-semibold" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-login w-100 fw-bold p-3 rounded-pill shadow-sm">LOGIN</button>
+            </form>
+            
+            <p class="text-center mt-4 small text-muted">Don't have an account? <a href="#" class="text-primary fw-bold text-decoration-none">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="forgotModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-0">
+                <h5 class="fw-bold">Password Recovery</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4 pt-0">
+                <ul class="nav nav-pills nav-justified mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item"><button class="nav-link active rounded-pill mx-1" data-bs-toggle="pill" data-bs-target="#emailTab">Email</button></li>
+                    <li class="nav-item"><button class="nav-link rounded-pill mx-1" data-bs-toggle="pill" data-bs-target="#otpTab">SMS / OTP</button></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="emailTab">
+                        <input type="email" class="form-control mb-3 p-3 bg-light border-0" placeholder="email@website.com">
+                        <button class="btn btn-primary w-100 rounded-3 p-2">Send Reset Link</button>
+                    </div>
+                    <div class="tab-pane fade" id="otpTab">
+                        <input type="tel" class="form-control mb-3 p-3 bg-light border-0" placeholder="+92 XXX XXXXXXX">
+                        <button class="btn btn-success w-100 rounded-3 p-2">Send Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const alertBox = document.getElementById('validationAlert');
+
+    loginForm.addEventListener('submit', function(e) {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (username === "" || password === "") {
+            e.preventDefault(); // Form is not submit 
+            
+            // Alert show 
+            alertBox.style.display = 'block';
+            
+            // 3 seconds alert hide 
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        } else {
+            r// everything is right
+            alert("Success! Logging you in...");
+        }
+    });
+</script>
+</body>
+</html>
